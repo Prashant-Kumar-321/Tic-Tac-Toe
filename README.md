@@ -19,16 +19,20 @@ This is a simple classic Tic-Tac-Toe game built in Python. Two players can play 
    git clone <repository_url>  
    ```
 
-2. Create a virtual environment (optional but recommended):
+2. Navigate to the project directory:
    ```
+   cd tic-tac-toe
+   ```
+
+3. Create a virtual environment (optional but recommended):
+   ```
+   Linux/Mac:
+   python3 -m venv venv
+   source venv/bin/activate 
+
+   Windows:
    python -m venv venv
-
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-
-3. Navigate to the project directory:
-   ```
-   cd tic_tac_toe
+   venv\Scripts\activate
    ```
 
 4. Run the game:
