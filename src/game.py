@@ -1,12 +1,11 @@
 from src.board import Board, Winner
-from src.player import Player
 from src.utilities import clear_screen
 
 class Game: 
-    def __init__(self, player1_name, player2_name):
+    def __init__(self, player1, player2):
         self.board = Board()
-        self.player1 = Player(player1_name, "X")
-        self.player2 = Player(player2_name, "O")
+        self.player1 = player1
+        self.player2 = player2
         self.current_player = self.player1
         self.current_cell_no = None
 
@@ -21,6 +20,8 @@ class Game:
     def get_current_player_move(self):
         """ Reads the move from the current player. """
         while True:
+            # get move from computer and human
+
             cell_no = self.current_player.get_move()
             if self.board.validate(cell_no):
                 break

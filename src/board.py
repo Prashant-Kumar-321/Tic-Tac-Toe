@@ -79,7 +79,11 @@ class Board:
         if self.matrix[row][col] != 0:
             raise ValueError("Cell is already occupied.")
 
-        self.matrix[row][col] = 1 if player.symbol == "X" else -1
+        self.matrix[row][col] = self.get_board_cell_value(player)
+
+    def get_board_cell_value(self, player): 
+        """ Returns the value used in the board matrix for the given player. """
+        return 1 if player.symbol == "X" else -1
 
     def validate(self, cell_no):
         """ Validates if the given cell number is a valid move. """
