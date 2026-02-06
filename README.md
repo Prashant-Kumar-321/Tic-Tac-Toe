@@ -51,6 +51,19 @@ To run the unit test for Tic-Tac-Toe game, use the following command from the pr
 python -m pytest -q 
 ```
 
+Run a single test file:
+```
+python -m pytest -q path/to/test/file.py -s
+```
+
+Run a particular test function from a test file: 
+```
+python -m pytest -q path/to/test/file.py::test_function_name -s
+
+"-s" flag is used to see print statements in the test output.
+```
+
+
 ## Contributing
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any bugs or feature requests. 
 For future improvements, consider adding
@@ -59,6 +72,9 @@ For future improvements, consider adding
 - A graphical user interface (GUI) for better user experience.
 - Online multiplayer functionality.
 - Score tracking and statistics.
+
+# Minor Issues
+1. Update render method in board.py to make it dynamic and should be able to handle different board sizes.
 
 
 ## License

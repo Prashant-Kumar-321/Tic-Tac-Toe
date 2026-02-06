@@ -9,13 +9,21 @@ class Winner(Enum):
     TIE = 'Tie'
 
 class Board: 
-    def __init__(self):
-        self.matrix = [
-            [0, 0, 0], 
-            [0, 0, 0],
-            [0, 0, 0]
-        ]
+    def __init__(self, rows=3, cols=3):
+        if rows != cols: 
+            raise ValueError("Only square boards are supported.")
+        
+        if rows < 3:
+            raise ValueError("Board size can not be less than 3x3")
+        
+        self.ROWS = rows
+        self.COLS = cols
+
+        # Populate NxN matrix with 0s
+        self.matrix = [[0 for _ in range(cols)] for _ in range(rows)]
+
         self.winner = Winner.NONE
+
 
     def render(self):
         """ Renders the board to the console in a bordered 3x3 table. """
@@ -33,7 +41,10 @@ class Board:
             if cell == -1:
                 return "O"
 
-        horizontal = "+---+---+---+"
+        horizontal = "+"
+        for _ in range(self.ROWS):
+            horizontal += "---+"
+
         print(horizontal)
 
         for i in range(len(self.matrix)):
@@ -68,6 +79,33 @@ class Board:
             self.winner = Winner.TIE
         else:
             self.winner = Winner.NONE
+
+    def empty_cells(self):
+        """ Returns a list of empty 1-based cell numbers """
+        empty = []
+
+        for i in range(3):
+            for j in range(3):
+                if self.matrix[i][j] == 0:
+                    cell_no = i * 3 + j + 1
+                    empty.append(cell_no)
+        return empty
+
+    def get_row_col(self, cell_no):
+        """ Returns the row and column indices for a given 1-based cell number"""
+
+        idx = cell_no - 1
+
+        row = idx // self.ROWS
+        col = idx % self.ROWS
+
+        return row, col
+
+    def is_game_over(self):
+        """ Returns True if the game is over (win or tie), False otherwise. """
+        self.check_winner()
+        return self.winner != Winner.NONE
+
 
     def update_board(self, cell_no, player):
         """ Updates the board at the given cell number for the specified player. """
