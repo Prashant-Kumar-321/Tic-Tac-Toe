@@ -80,6 +80,34 @@ class Board:
         else:
             self.winner = Winner.NONE
 
+
+    def minimax_check_winner(self):
+        """ Checks the board for a winner. Updates"""
+        lines = []
+
+        # Rows and Columns
+        for i in range(3):
+            lines.append(self.matrix[i])  # rows
+            lines.append([self.matrix[0][i], self.matrix[1][i], self.matrix[2][i]])  # columns
+
+        # Diagonals
+        lines.append([self.matrix[0][0], self.matrix[1][1], self.matrix[2][2]])
+        lines.append([self.matrix[0][2], self.matrix[1][1], self.matrix[2][0]])
+
+        for line in lines:
+            line_sum = reduce(add, line)
+            if line_sum == 3:
+                return Winner.X
+            
+            elif line_sum == -3:
+                return Winner.O
+            
+        # Check for tie or ongoing game
+        if all(cell != 0 for row in self.matrix for cell in row):
+            return Winner.TIE
+        else:
+            return Winner.NONE
+
     def empty_cells(self):
         """ Returns a list of empty 1-based cell numbers """
         empty = []
