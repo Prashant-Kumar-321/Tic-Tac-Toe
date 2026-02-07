@@ -27,11 +27,11 @@ class GameSetup:
         """Gets player instances based on the selected game mode."""
 
         if mode == 1:
-            player1_name = input("Enter name for Player 1 (X): ").strip()
+            player1_name = input("Enter name for Player 1 (O): ").strip()
             player2_name = "Computer"
 
-            player1 = HumanPlayer(player1_name, "X")
-            player2 = AIPlayer(player2_name, "O")
+            player1 = HumanPlayer(player1_name, "O")
+            player2 = AIPlayer(player2_name, "X")
         
         elif mode == 2:
             player1_name = input("Enter name for Player 1 (X): ").strip()

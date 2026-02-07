@@ -1,4 +1,6 @@
+import time
 from src.board import Board, Winner
+from src.players.ai_player import AIPlayer
 from src.utilities import clear_screen
 
 class Game: 
@@ -22,7 +24,14 @@ class Game:
         while True:
             # get move from computer and human
 
-            cell_no = self.current_player.get_move()
+            if isinstance(self.current_player, AIPlayer):
+                print(f"{self.current_player.name} is thinking...")
+                cell_no = self.current_player.get_move(self.board) 
+                time.sleep(1) # simulate thinking time
+            else: 
+                cell_no = self.current_player.get_move()
+
+
             if self.board.validate(cell_no):
                 break
             else:
@@ -35,11 +44,23 @@ class Game:
         """ Displays the result of the game. """
         self.display_board()
 
+        def print_winner_losser(winner, losser):
+            if winner.name == 'Computer': 
+                print(f"{winner.name} wins!")
+                print(f"{losser.name} loses!")
+            else: 
+                print(f"{winner.name} wins!")
+
         if self.board.winner == Winner.X:
-            print(f"{self.player1.name} (X) wins!")
+            winner = self.player1 if self.player1.symbol == 'X' else self.player2
+            losser = self.player1 if winner is self.player2 else self.player2
+            print_winner_losser(winner, losser)
+
 
         elif self.board.winner == Winner.O:
-            print(f"{self.player2.name} (O) wins!")
+            winner = self.player1 if self.player1.symbol == 'O' else self.player2
+            losser = self.player1 if winner is self.player2 else self.player2
+            print_winner_losser(winner, losser)
 
         else:
             print("It's a tie!")
