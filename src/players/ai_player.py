@@ -14,30 +14,24 @@ class AIPlayer(Player):
 
     def score_of_state(self, depth, winner):
         """Return score of the board state for minimax evaluation"""
-        if winner == Winner.NONE:
-            raise ValueError("Game is still ongoing, no winner yet.")
-
         if winner == Winner.TIE:
             return 0
         
         if winner == Winner.X:
-            return 10-depth
+            return 10 - depth
         
         if winner == Winner.O:
             return depth - 10
             
 
     def minimax(self, board, depth, is_maximizing):
-        # Base Case
-        # Is board filled or has a winner
 
-        winner = board.minimax_check_winner()
-        if winner != Winner.NONE:
-            return self.score_of_state(depth, winner) # (move, score) -> return +1, -1 or 0 
-
-
+        if board.is_game_over():
+            return self.score_of_state(depth, board.winner) 
+        
+        # move values of ai and human palyers
         ai = 1 
-        human = -1
+        human = -ai
 
         if is_maximizing:
             best_score = -float('inf')
@@ -47,13 +41,13 @@ class AIPlayer(Player):
         for cell in board.empty_cells(): 
             r, c = board.get_row_col(cell)
 
-            # prev_winner = board.winner # preserve winner state 
+            prev_winner = board.winner # preserve winner state 
 
             board.matrix[r][c] = ai if is_maximizing else human # set the cell 
             score = self.minimax(board, depth+1, not is_maximizing)
             board.matrix[r][c] = 0 # reset the cell
 
-            # board.winner = prev_winner # restore winner state
+            board.winner = prev_winner # restore winner state
 
             if is_maximizing:
                 best_score = max(score, best_score)

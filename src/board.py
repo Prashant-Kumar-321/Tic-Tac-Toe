@@ -112,10 +112,10 @@ class Board:
         """ Returns a list of empty 1-based cell numbers """
         empty = []
 
-        for i in range(3):
-            for j in range(3):
+        for i in range(self.ROWS):
+            for j in range(self.COLS):
                 if self.matrix[i][j] == 0:
-                    cell_no = i * 3 + j + 1
+                    cell_no = i * self.ROWS + j + 1
                     empty.append(cell_no)
         return empty
 
@@ -131,7 +131,14 @@ class Board:
 
     def is_game_over(self):
         """ Returns True if the game is over (win or tie), False otherwise. """
+
+        # prev_winner = self.winner
         self.check_winner()
+        # is_over = self.winner != Winner.NONE
+        # self.winner = prev_winner
+
+        # return is_over
+
         return self.winner != Winner.NONE
 
 
@@ -139,8 +146,8 @@ class Board:
         """ Updates the board at the given cell number for the specified player. """
 
         idx = cell_no - 1
-        row = idx // 3
-        col = idx % 3
+        row = idx // self.ROWS
+        col = idx % self.COLS
 
         if self.matrix[row][col] != 0:
             raise ValueError("Cell is already occupied.")
@@ -155,8 +162,8 @@ class Board:
         """ Validates if the given cell number is a valid move. """
 
         idx = cell_no - 1
-        row = idx // 3
-        col = idx % 3
+        row = idx // self.ROWS
+        col = idx % self.COLS
 
         return self.matrix[row][col] == 0
     
