@@ -11,7 +11,7 @@ class GameSetup:
         while True:
             display_heading()
             print("\nSelect Game Mode:")
-            print("1. Play with AI")
+            print("1. Play with Computer")
             print("2. Double User Mode")
             print("3. Quit")
             
