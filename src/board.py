@@ -131,14 +131,7 @@ class Board:
 
     def is_game_over(self):
         """ Returns True if the game is over (win or tie), False otherwise. """
-
-        # prev_winner = self.winner
         self.check_winner()
-        # is_over = self.winner != Winner.NONE
-        # self.winner = prev_winner
-
-        # return is_over
-
         return self.winner != Winner.NONE
 
 

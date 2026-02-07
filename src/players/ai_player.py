@@ -8,26 +8,32 @@ class AIPlayer(Player):
     def __init__(self, name='AI', symbol='X'):
         super().__init__(name, symbol)
 
-    def get_maximizing_flag(self): 
-        return True if self.symbol == 'X' else False
+    def score_of_state(self, depth, board):
+        """
+        Return score of the board state for minimax evaluation
 
+        (TERMINAL_SCORE_BASE - depth) if X wins (higher score for faster wins)
+        (depth - TERMINAL_SCORE_BASE) if O wins (negative score, less negative for faster defeats)
 
-    def score_of_state(self, depth, winner):
-        """Return score of the board state for minimax evaluation"""
+        """
+
+        winner = board.winner
+        TERMINAL_SCORE_BASE = board.ROWS * board.COLS + 1 
+
         if winner == Winner.TIE:
             return 0
         
         if winner == Winner.X:
-            return 10 - depth
+            return TERMINAL_SCORE_BASE - depth
         
         if winner == Winner.O:
-            return depth - 10
+            return depth - TERMINAL_SCORE_BASE
             
 
     def minimax(self, board, depth, is_maximizing):
 
         if board.is_game_over():
-            return self.score_of_state(depth, board.winner) 
+            return self.score_of_state(depth, board) 
         
         # move values of ai and human palyers
         ai = 1 

@@ -14,17 +14,17 @@ def test_ai_player():
         [1, 0, -1]
     ]
 
-    board.matrix = [
-        [1, 0, 0],
-        [-1, 0, -1],
-        [0, 0, 0]
-    ]
+    # board.matrix = [
+    #     [1, 0, 0],
+    #     [-1, 0, -1],
+    #     [0, 0, 0]
+    # ]
 
-    board.matrix = [
-        [0, 0, -1],
-        [1, 0, 1],
-        [-1, 0, -1]
-    ]
+    # board.matrix = [
+    #     [0, 0, -1],
+    #     [1, 0, 1],
+    #     [-1, 0, -1]
+    # ]
 
     move = ai_player.get_move(board)
     print(f"AI selected move: {move}")
