@@ -90,7 +90,6 @@ python -m pytest -q path/to/test/file.py::test_function_name -s
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any bugs or feature requests. 
 For future improvements, consider adding
 - Undo move feature.
-- An Computer opponent for single-player mode.
 - A graphical user interface (GUI) for better user experience.
 - Online multiplayer functionality.
 - Score tracking and statistics.
