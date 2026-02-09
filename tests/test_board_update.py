@@ -1,7 +1,8 @@
 import pytest
 
 from src.board import Board
-from src.player import Player
+from src.players.human_player import HumanPlayer
+from src.players.ai_player import AIPlayer
 
 def test_update_board_valid():
     board = Board()
@@ -12,7 +13,7 @@ def test_update_board_valid():
     ]
 
     cell_no = 6
-    player1 = Player('player_name', 'X')
+    player1 = HumanPlayer('player_name', 'X')
     board.update_board(cell_no, player1)
 
     assert board.matrix[1][2] == 1
@@ -26,7 +27,7 @@ def test_update_board_invalid():
     ]
 
     cell_no = 1
-    player1 = Player('player_name', 'X')
+    player1 = AIPlayer('player_name', 'X')
 
     with pytest.raises(ValueError):
         board.update_board(cell_no, player1)
