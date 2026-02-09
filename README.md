@@ -1,10 +1,20 @@
 # Tic-Tac-Toe Game
 
-This is a simple classic Tic-Tac-Toe game built in Python. Two players can play against each other by taking turns to place their marks (X and O) on a 3x3 grid.
+This is a simple classic Tic-Tac-Toe game built in Python. The game supports both two-player mode (Human vs Human) and single-player mode (Human vs Computer). The game is played on a 3x3 grid, and the objective is to get three of your marks in a row (horizontally, vertically, or diagonally) before your opponent does.
+
+| | |
+|---|---|
+| ![Single user mode](./assests/ai_2.gif) | ![Dual user Mode](./assests/human.gif) |
+| `Single User Mode Tic-Tac-Toe` | `Dual User Mode Tic-Tac-Toe` |
 
 ## Features
-- Two-player mode (Human vs Human).
-- Single Player mode (Human vs Computer).
+- Two mode options:
+   - Two-Player mode (Human vs Human).
+   - Single Player mode (Human vs Computer).
+      - Computer opponet is implemented using [minimax algorithm](./minimax.md)for optimal play.
+
+- Simple command-line interface for easy interaction.
+
 
 ## How to Play
 1. Navigate to the project directory.
@@ -13,6 +23,14 @@ This is a simple classic Tic-Tac-Toe game built in Python. Two players can play 
 4. Players take turns to enter their moves by specifying the cell number(1-9) where they want to place their mark.  
 5. The game continues until one player wins or the game ends in a draw.
 6. To play again, simply restart the script.
+
+## Tools and Technologies Used
+- Python 3.x
+- Minimax Algorithm for AI opponent
+- Pytest for unit testing
+- Git for version control
+- GitHub for code hosting and collaboration
+
 
 ## Requirements
 - Python 3.x
