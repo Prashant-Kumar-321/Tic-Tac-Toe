@@ -106,7 +106,9 @@ def minimax(state, depth, is_maximizing):
 
 ## Resources 
 [Minimax implementation by coding train YouTube Channel](https://youtu.be/trKjYdBASyQ?si=kjMoUpm6FOdAMiDB)
+
 [Minimax with Alpha beta Pruning by Sabastian Langue](https://youtu.be/l-hh51ncgDI?si=LgiPRZsKuOaAYpoL)
+
 [GFG Article](https://www.geeksforgeeks.org/artificial-intelligence/mini-max-algorithm-in-artificial-intelligence/)
 
 
